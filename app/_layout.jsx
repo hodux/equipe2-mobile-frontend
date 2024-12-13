@@ -1,23 +1,27 @@
-import { StyleSheet, Text, View } from 'react-native'
-import { Drawer } from 'expo-router/drawer';
-import {GestureHandlerRootView} from "react-native-gesture-handler";
+import React from 'react'
+import { ThemeProvider } from '../contexts/ThemeContext';
+
+// Import your global CSS file
+import "../global.css";
+import {Stack} from "expo-router";
+import {StatusBar} from "react-native";
 
 const RootLayout = () => {
-    return (
+  return (
+    <ThemeProvider>
         <Layout/>
-    )
+    </ThemeProvider>
+  )
 }
-
 const Layout = () => {
-    return (
-        <>
-            <GestureHandlerRootView className="flex-1" >
-                <Drawer>
-                    <Drawer.Screen name="index" options={{ headerShown:false }} />
-                </Drawer>
-            </GestureHandlerRootView>
-        </>
-    )
+  return (
+    <>
+        <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        </Stack>
+    </>
+  )
 }
 
 export default RootLayout
+

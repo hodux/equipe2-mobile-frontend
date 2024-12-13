@@ -1,7 +1,8 @@
-# Équipe2-Mobile-Frontend
+# equipe2-mobile-frontend
 Épreuve Finale - Développement d'une Application Android
 ### Étudiant:
 * Yves-Shaheem Shedid - GitHub: Yves-Shaheem
 * Mathieu G. Sousa - GitHub: hodux
 
 Lien Backend | https://github.com/hodux/equipe2-mobile-backend
+
