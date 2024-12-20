@@ -26,10 +26,10 @@ const signin = () => {
   
   const submit = async () => {
 
-    if(form.usernameOrEmail == "" || form.password == ""){
-      if(form.usernameOrEmail == ""){
+    if(form.usernameOrEmail === "" || form.password === ""){
+      if(form.usernameOrEmail === ""){
           setAlertIdentifier(true)
-          if(form.password == ""){
+          if(form.password === ""){
             setAlertMDP(true)
           }
           else{
