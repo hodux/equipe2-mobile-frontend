@@ -29,6 +29,7 @@ const Layout = () => {
                   <Drawer.Screen name="[user]/profile_with_blocks" options={{headerShown:false, drawerItemStyle: { display: 'none' }}} />
                   <Drawer.Screen name="(tabs)" options={{headerShown:false, drawerItemStyle: { display: 'none' }}} />
                   <Drawer.Screen name="[user]/profile" options={{ drawerItemStyle: { display: 'none' }}} />
+                  <Drawer.Screen name="[movie]/detail" />
               </Drawer>
           </GestureHandlerRootView>
       </>

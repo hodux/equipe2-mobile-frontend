@@ -10,7 +10,7 @@ const index = () => {
     const { theme } = useTheme()
     const router = useRouter()
     const colors = colorsPalette[theme]
-    // return <Redirect href="./77/profile" />;
+    // return <Redirect href="./7/detail" />;
     useFocusEffect(() => {
         try{
             const getId = async () => {
