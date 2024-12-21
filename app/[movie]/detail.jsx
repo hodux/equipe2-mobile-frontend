@@ -6,10 +6,6 @@ import {fetchMovieById} from '../../lib/axios'
 import {useGlobalSearchParams, useRouter} from 'expo-router';
 import YouTubeIframe from 'react-native-youtube-iframe';
 import {Rating} from "react-native-ratings";
-import Icon from 'react-native-vector-icons/FontAwesome5';
-
-const WIDTH = Dimensions.get('window').width
-const HEIGHT = Dimensions.get('window').height
 const detail = () => {
     const { theme } = useTheme()
     const colors = colorsPalette[theme]
@@ -67,7 +63,6 @@ const detail = () => {
                         <Text className="mr-4 text-lg font-bold" style={{color:colors.text}}> Content rating : {movie.contentRating}</Text>
                         <Text className="mr-4 text-lg font-bold" style={{color:colors.text}}> Year : {movie.startYear}</Text>
                         <Text className="mr-4 text-lg font-bold" style={{color:colors.text}}> Length : {movie.runtimeMinutes} min</Text>
-
                     </View>
                     <TouchableOpacity className="p-4 m-4 rounded" style={{backgroundColor:colors.secondary}} onPress={() => isModalVisible(!modalVisible)}>
                         <Text className="text-white text-lg">Watch Trailer</Text>
