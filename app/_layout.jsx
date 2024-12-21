@@ -1,10 +1,9 @@
 import React from 'react'
 import { ThemeProvider } from '../contexts/ThemeContext';
-
-// Import your global CSS file
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import "../global.css";
-import {Stack} from "expo-router";
-import {StatusBar} from "react-native";
+import CustomDrawerHeader from "../components/CustomDrawerHeader";
+import {Drawer} from "expo-router/drawer";
 
 const RootLayout = () => {
   return (
@@ -15,11 +14,24 @@ const RootLayout = () => {
 }
 const Layout = () => {
   return (
-    <>
-        <Stack>
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        </Stack>
-    </>
+      <>
+          <GestureHandlerRootView className="flex-1" >
+              <Drawer
+                  screenOptions={{
+                      swipeEnabled:true,
+                      // headerShown:false,
+                      header: ({navigation}) => <CustomDrawerHeader navigation={navigation} tabName={""} />
+                  }
+                  }>
+                  <Drawer.Screen name="index" options={{headerShown:false}}/>
+                  <Drawer.Screen name="camera/index" options={{headerShown:false, drawerItemStyle: { display: 'none' }}} />
+                  <Drawer.Screen name="auth" options={{headerShown:false}} />
+                  <Drawer.Screen name="[user]/profile_with_blocks" options={{headerShown:false, drawerItemStyle: { display: 'none' }}} />
+                  <Drawer.Screen name="(tabs)" options={{headerShown:false, drawerItemStyle: { display: 'none' }}} />
+                  <Drawer.Screen name="[user]/profile" options={{ drawerItemStyle: { display: 'none' }}} />
+              </Drawer>
+          </GestureHandlerRootView>
+      </>
   )
 }
 
