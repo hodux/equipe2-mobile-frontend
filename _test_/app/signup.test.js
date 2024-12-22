@@ -3,7 +3,6 @@ import { render, fireEvent, waitFor } from '@testing-library/react-native';
 import Signup from "../../app/auth/signup";
 import { useRouter } from 'expo-router';
 import { useTheme } from '../../contexts/ThemeContext';
-import Index from "../../app";
 import {signUp} from "../../lib/axios";
 
 jest.mock('../../contexts/ThemeContext', () => ({
@@ -18,7 +17,7 @@ jest.mock('expo-router', () => ({
 beforeEach(() => {
     jest.clearAllMocks(); // Réinitialise tous les mocks avant chaque test
 });
-describe('Index Component with mocked functions ', () => {
+describe('SignUp Component with mocked functions ', () => {
     const mockRouter = {push: jest.fn()};
     beforeEach(() => {
         jest.clearAllMocks();
@@ -57,4 +56,14 @@ describe('Index Component with mocked functions ', () => {
     //         expect(mockRouter.push).toHaveBeenCalledWith("../(tabs)/0/profile");
     //     });
     // });
+    it('when button "Sign-in" is pressed it redirect to ./signin', async () => {
+        const { getByText } = render(<Signup/>);
+        const textElement = getByText("If you already have an account.");
+        expect(textElement).toBeTruthy();
+        fireEvent.press(getByText('Sign-in'));
+        await waitFor(() => {
+            expect(mockRouter.push).toHaveBeenCalledWith("./signin");
+        });
+
+    });
 });
