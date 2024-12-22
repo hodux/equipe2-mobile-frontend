@@ -4,11 +4,14 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import "../global.css";
 import CustomDrawerHeader from "../components/CustomDrawerHeader";
 import {Drawer} from "expo-router/drawer";
+import {FavoriteMovieProvider} from "../contexts/favoriteMovieContext";
 
 const RootLayout = () => {
   return (
     <ThemeProvider>
-        <Layout/>
+        <FavoriteMovieProvider>
+            <Layout/>
+        </FavoriteMovieProvider>
     </ThemeProvider>
   )
 }
@@ -19,8 +22,7 @@ const Layout = () => {
               <Drawer
                   screenOptions={{
                       swipeEnabled:true,
-                      // headerShown:false,
-                      header: ({navigation}) => <CustomDrawerHeader navigation={navigation} tabName={""} />
+                      header: ({navigation}) => <CustomDrawerHeader navigation={navigation} />
                   }
                   }>
                   <Drawer.Screen name="index" options={{headerShown:false}}/>

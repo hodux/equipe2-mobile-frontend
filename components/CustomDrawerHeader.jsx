@@ -5,10 +5,12 @@ import { useTheme } from '../contexts/ThemeContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { colorsPalette } from '../assets/colorsPalette';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import {useFavoriteMovieContext} from "../contexts/favoriteMovieContext";
 
 
-const CustomDrawerHeader = ({navigation, tabName}) => {
+const CustomDrawerHeader = ({navigation}) => {
   const { theme, toggleTheme} = useTheme();
+  const {favoriteMovie} = useFavoriteMovieContext();
   const colors = colorsPalette[theme];
   return (
     <SafeAreaView style={[styles.header,{backgroundColor:colors.background}]}>
@@ -19,7 +21,7 @@ const CustomDrawerHeader = ({navigation, tabName}) => {
         </Text>
       </TouchableOpacity>
       
-      <Text style={[styles.title,{color:colors.text}]}>{tabName}</Text>
+      <Text style={[styles.title,{color:colors.alert}]}>{favoriteMovie}</Text>
       <TouchableOpacity style={[styles.content]} onPress={() => {toggleTheme()}}>
         <Text>
             <Icon name={theme == 'light' ? "moon" : "sun"} size={30} color={colors.text}/>

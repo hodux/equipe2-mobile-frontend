@@ -2,7 +2,7 @@ import { Text, View } from 'react-native'
 import React from 'react'
 import { useTheme } from '../contexts/ThemeContext'
 import { TouchableOpacity } from 'react-native'
-import { Link, useFocusEffect, useRouter} from 'expo-router'
+import {Link, useFocusEffect, useGlobalSearchParams, useRouter} from 'expo-router'
 import { colorsPalette } from '../assets/colorsPalette'
 import { getIdFromJwt } from '../lib/axios'
 
@@ -10,13 +10,14 @@ const index = () => {
     const { theme } = useTheme()
     const router = useRouter()
     const colors = colorsPalette[theme]
-
+    const glob = useGlobalSearchParams();
     // Navigate to /movies if JWT is valid
     useFocusEffect(
         React.useCallback(() => {
+            let id = undefined;
             const checkJWT = async () => {
                 try {
-                    const id = await getIdFromJwt();
+                    id = await getIdFromJwt();
                     if (!id) {
                         console.log("No JWT");
                         return false;
@@ -30,7 +31,12 @@ const index = () => {
 
             checkJWT().then((hasJWT) => {
                 if (hasJWT) {
-                    router.push(`/(tabs)/movies`);
+                    router.push({
+                        pathname:`/(tabs)/movies`,
+                        params:{
+                            user:id,
+                        }
+                    });
                 }
             });
         }, [router])

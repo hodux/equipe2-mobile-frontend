@@ -6,8 +6,10 @@ import {fetchMovieById} from '../../lib/axios'
 import {useGlobalSearchParams, useRouter} from 'expo-router';
 import YouTubeIframe from 'react-native-youtube-iframe';
 import {Rating} from "react-native-ratings";
+import {useFavoriteMovieContext} from "../../contexts/favoriteMovieContext";
 const detail = () => {
     const { theme } = useTheme()
+    const {setFavoriteMovie} = useFavoriteMovieContext();
     const colors = colorsPalette[theme]
     const glob = useGlobalSearchParams();
     const router = useRouter()
@@ -66,6 +68,9 @@ const detail = () => {
                     </View>
                     <TouchableOpacity className="p-4 m-4 rounded" style={{backgroundColor:colors.secondary}} onPress={() => isModalVisible(!modalVisible)}>
                         <Text className="text-white text-lg">Watch Trailer</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity className="p-4 m-4 rounded" style={{backgroundColor:colors.alert}} onPress={() => setFavoriteMovie(movie.title)}>
+                        <Text className="text-white text-lg">Favorite</Text>
                     </TouchableOpacity>
                     <Modal
                         animationType="fade"
