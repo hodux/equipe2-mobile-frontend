@@ -33,6 +33,7 @@ const detail = () => {
         // Fetch movie data
         const loadData = async () => {
             try{
+                console.log(glob.movie);
                 const movieData = await fetchMovieById(glob.movie);
                 if(!movieData) throw new Error('Failed fetching data -> no Data')
                 setMovie(movieData);

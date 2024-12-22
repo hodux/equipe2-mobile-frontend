@@ -131,7 +131,7 @@ const profile = () => {
         <View className="w-full" >
           <View className="justify-center items-center py-5">
             <TouchableOpacity 
-              onPress={() => {refresh.current = true;router.push("../camera")} }
+              onPress={() => {refresh.current = true;router.push("../../../camera")} }
               className="rounded-full " 
               disabled={!isEditing} 
               style={isEditing ? {borderWidth:4, borderColor:colors.lightAlert} : {}}

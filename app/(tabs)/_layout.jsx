@@ -5,7 +5,6 @@ import {ThemeProvider} from "../../contexts/ThemeContext";
 
 export default function TabsLayout() {
     return (
-        <ThemeProvider>
             <Tabs>
                 <Tabs.Screen
                     name="movies"
@@ -17,7 +16,7 @@ export default function TabsLayout() {
                     }}
                 />
                 <Tabs.Screen
-                    name="profile"
+                    name="[user]/profile"
                     options={{
                         tabBarLabel: "Profile",
                         tabBarIcon: ({ color, size }) => (
@@ -26,6 +25,5 @@ export default function TabsLayout() {
                     }}
                 />
             </Tabs>
-        </ThemeProvider>
     );
 }

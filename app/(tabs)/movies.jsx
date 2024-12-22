@@ -93,8 +93,8 @@ const MovieCard = ({ movie, selectedMovies, setSelectedMovies }) => {
     };
 
     const handleDetailsPress = () => {
-        console.log(`Details for ${movie.title}`);
-        router.push(`/movie/detail/${movie.id}`);
+        console.log(`Details for ${movie.id}`);
+        router.push(`../${movie.id}/detail/`);
     };
 
     const handleImageLoad = () => {
@@ -140,8 +140,7 @@ const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 10,
-        backgroundColor: '#fff',
+        padding: 10
     },
     title: {
         fontSize: 24,
