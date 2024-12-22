@@ -10,14 +10,14 @@ export default function TabsLayout() {
     return (
             <Tabs screenOptions={{
                 tabBarStyle: {
-                    backgroundColor: colors.background_c1, // Set the tab bar background color
+                    backgroundColor: colors.background_c1,
                 },
-                tabBarActiveTintColor: colors.secondary, // Active tab text/icon color
-                tabBarInactiveTintColor: '#888888', // Inactive tab text/icon color
+                tabBarActiveTintColor: colors.secondary,
+                tabBarInactiveTintColor: '#888888',
                 headerStyle: {
-                    backgroundColor: colors.background_c1, // Set the header background color
+                    backgroundColor: colors.background_c1,
                 },
-                headerTintColor: colors.text, // Set the header text/icon color
+                headerTintColor: colors.text,
             }}>
                 <Tabs.Screen
                     name="movies"
@@ -33,7 +33,7 @@ export default function TabsLayout() {
                 name="[movie]/detail"
                 options={{
                     title: 'Detail',
-                    tabBarButton: () => null, // Hides the tab from the tab bar
+                    tabBarButton: () => null,
                 }}
                 />
                 <Tabs.Screen

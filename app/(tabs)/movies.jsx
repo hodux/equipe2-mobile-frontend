@@ -94,7 +94,7 @@ const MovieCard = ({ movie, selectedMovies, setSelectedMovies }) => {
 
     const handleDetailsPress = () => {
         console.log(`Details for ${movie.id}`);
-        router.push(`../${movie.id}/detail/`);
+        router.replace(`${movie.id}/detail/`);
     };
 
     const handleImageLoad = () => {

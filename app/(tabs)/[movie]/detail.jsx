@@ -42,7 +42,7 @@ const detail = () => {
             }
         };
         loadData();
-    }, []);
+    }, [glob.movie]);
     return (
         <>
             <ScrollView style={{backgroundColor:colors.background_c1}} contentContainerStyle={{ flexGrow: 1 }}>
