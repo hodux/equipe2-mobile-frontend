@@ -85,7 +85,7 @@ const SignUp = () => {
           className="flex-1 items-center"
           >
             <ScrollView showsVerticalScrollIndicator={false}>
-              <Text className="text-7xl font-bold tracking-[2px] text-center uppercase pt-24 pb-16" style={{color:colors.primary}}>ChatMV</Text>
+              <Text className="text-7xl font-bold tracking-[2px] text-center pt-24 pb-16" style={{color:colors.primary}}>Howah</Text>
               <View className="flex-1 justify-center items-center gap-8" >
                 <Text className="text-4xl font-semibold pb-4" style={{color:colors.text}}>Créez votre compte</Text>
                 {loading ? <ActivityIndicator size="large" color={colors.primary} /> : null}

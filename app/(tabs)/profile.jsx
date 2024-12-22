@@ -18,6 +18,7 @@ const profile = () => {
   const router = useRouter()
   const refresh = useRef(false)
   const markerImage = require("../../assets/images/profile/logoMV.png")
+
   //Default Data
   const [username,setUsername] = useState("Default")
   const [email,setEmail] = useState('Default@abc.ca')

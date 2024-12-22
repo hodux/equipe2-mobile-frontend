@@ -1,10 +1,10 @@
 // colors.js
 export const colorsPalette = {
   light:{
-    primary: '#3498db',
+    primary: '#db8d34',
     secondary: '#2d498a',
-    background_c1:'#E3F6F7',
-    background: '#B2EBF9',
+    background_c1:'#ffffff',
+    background: '#556f76',
     text: '#2c3e50',
     link: 'blue',
     alert: '#ba1313',
@@ -24,8 +24,8 @@ export const colorsPalette = {
     lightAlert: '#db8f8f'
 
   }
-    
-  };
+
+};
 
 
 
