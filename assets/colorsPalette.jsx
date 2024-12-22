@@ -4,7 +4,7 @@ export const colorsPalette = {
     primary: '#db8d34',
     secondary: '#2d498a',
     background_c1:'#ffffff',
-    background: '#556f76',
+    background: 'gray',
     text: '#2c3e50',
     link: 'blue',
     alert: '#ba1313',
