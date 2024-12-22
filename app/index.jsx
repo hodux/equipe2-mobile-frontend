@@ -2,12 +2,12 @@ import { Text, View } from 'react-native'
 import React from 'react'
 import { useTheme } from '../contexts/ThemeContext'
 import { TouchableOpacity } from 'react-native'
-import {Link, useFocusEffect, useGlobalSearchParams, useRouter} from 'expo-router'
+import {Link, useFocusEffect, useRouter} from 'expo-router'
 import { colorsPalette } from '../assets/colorsPalette'
 import {getFavoriteMovies, getIdFromJwt} from '../lib/axios'
 import {useFavoriteMovieContext} from "../contexts/favoriteMovieContext";
 
-const index = () => {
+const Index = () => {
     const { theme } = useTheme()
     const router = useRouter()
     const colors = colorsPalette[theme]
@@ -57,12 +57,18 @@ const index = () => {
                 <Text className={`text-4xl`} style={{color:colors.lightText}}>Get started !</Text>
             </TouchableOpacity>
 
-            <Text class="text-3xl font-bold underline" style={{color:colors.text}}>
-                If you don't already have an account. <Link style={{color:colors.link}} href="./auth/signup"> Sign-up</Link>
-            </Text>
+
+            <View style={{flexDirection: 'row'}}>
+                <Text class="text-3xl font-bold underline" style={{color:colors.text}}>
+                    If you don't already have an account.
+                </Text>
+                <TouchableOpacity onPress={() => { router.push("./auth/signup")}}>
+                    <Text style={{color:colors.link}}> Sign-up</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     )
 }
 
 
-export default index
+export default Index;
