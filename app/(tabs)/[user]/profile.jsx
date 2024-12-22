@@ -1,15 +1,13 @@
 import { Image, Text, View, TextInput, ScrollView,TouchableOpacity, Modal, FlatList, Dimensions} from 'react-native'
-import OverlayMessage from '../../components/OverlayMessage'
+import OverlayMessage from '../../../components/OverlayMessage'
 import React, { useEffect, useState, useRef } from 'react'
-import { useTheme } from '../../contexts/ThemeContext'
-import { colorsPalette } from '../../assets/colorsPalette'
+import { useTheme } from '../../../contexts/ThemeContext'
+import { colorsPalette } from '../../../assets/colorsPalette'
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { fetchProfileData, setToken, updateProfileData, deleteUserById } from '../../lib/axios'
+import { fetchProfileData, setToken, updateProfileData, deleteUserById } from '../../../lib/axios'
 import {useGlobalSearchParams, useRouter,useFocusEffect } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MapView, { Marker, Circle} from 'react-native-maps';
-
-const WIDTH = Dimensions.get('window').width
 
 const profile = () => {
   const { theme } = useTheme()
@@ -17,7 +15,7 @@ const profile = () => {
   const glob = useGlobalSearchParams();
   const router = useRouter()
   const refresh = useRef(false)
-  const markerImage = require("../../assets/images/profile/logoMV.png")
+  const markerImage = require("../../../assets/images/profile/logoMV.png")
 
   //Default Data
   const [username,setUsername] = useState("Default")

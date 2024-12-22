@@ -50,7 +50,7 @@ const signin = () => {
         const result = await signIn(form.usernameOrEmail,form.password)
         setLoading(false)
         setForm({usernameOrEmail:"",password:""})
-        router.push(`../${result.id}/profile`)
+        router.push(`../(tabs)/${result.id}/profile`)
 
     } catch(error){
         setLoading(false)

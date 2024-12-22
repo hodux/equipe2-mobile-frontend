@@ -56,7 +56,7 @@ const SignUp = () => {
         
         setLoading(false)
         setForm({username:"", email:"", password:""})
-        router.push(`../${result.id}/profile`)
+        router.push(`../(tabs)/${result.id}/profile`)
 
     } catch(error){
         setLoading(false)
