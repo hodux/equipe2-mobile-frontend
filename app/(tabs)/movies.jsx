@@ -121,11 +121,11 @@ const MovieCard = ({ movie, selectedMovies, setSelectedMovies }) => {
                     />
                 </View>
 
-                <Text style={[{ color: colors.lightText }]}>{movie.title}</Text>
+                <Text style={[{ color: colors.text }]}>{movie.title}</Text>
                 {selectedMovies.find((selectedMovie) => selectedMovie.id === movie.id) && (
                     <View style={[styles.details, {backgroundColor: colors.background}]}>
-                        <Text style={styles.detailsText}>Rating: {movie.contentRating ? movie.contentRating : "N/A"}</Text>
-                        <Text style={styles.detailsText}>Score: {movie.averageRating ? movie.averageRating : "N/A"} <FontAwesome name="star" size={12} color="yellow" /> </Text>
+                        <Text style={[{color: colors.text}]}>Rating: {movie.contentRating ? movie.contentRating : "N/A"}</Text>
+                        <Text style={[{color: colors.text}]}>Score: {movie.averageRating ? movie.averageRating : "N/A"} <FontAwesome name="star" size={12} color="yellow" /> </Text>
                         <TouchableOpacity style={[styles.detailsButton, {backgroundColor: colors.secondary}]} onPress={handleDetailsPress}>
                             <Text style={styles.detailsButtonText}>Details</Text>
                         </TouchableOpacity>
