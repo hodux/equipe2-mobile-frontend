@@ -2,7 +2,7 @@ import { Image, Text, View, TextInput, ScrollView,TouchableOpacity, Modal, FlatL
 import React, { useEffect, useState, useRef } from 'react'
 import { useTheme } from '../../../contexts/ThemeContext'
 import { colorsPalette } from '../../../assets/colorsPalette'
-import {fetchMovieById} from '../../../lib/axios'
+import {fetchMovieById, updateFavoriteMovie} from '../../../lib/axios'
 import {useGlobalSearchParams, useRouter} from 'expo-router';
 import YouTubeIframe from 'react-native-youtube-iframe';
 import {Rating} from "react-native-ratings";
@@ -43,6 +43,15 @@ const detail = () => {
         };
         loadData();
     }, [glob.movie]);
+    const handleMovieName = async () =>{
+        try {
+            setFavoriteMovie(movie.title)
+            const res = await updateFavoriteMovie(glob.user, movie.title);
+            if(!res) throw new Error('Failed updating data -> no Data')
+        }catch (error) {
+            console.log("Detail.js: Error: " + error);
+        }
+    }
     return (
         <>
             <ScrollView style={{backgroundColor:colors.background_c1}} contentContainerStyle={{ flexGrow: 1 }}>
@@ -70,7 +79,7 @@ const detail = () => {
                     <TouchableOpacity className="p-4 m-4 rounded" style={{backgroundColor:colors.secondary}} onPress={() => isModalVisible(!modalVisible)}>
                         <Text className="text-white text-lg">Watch Trailer</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity className="p-4 m-4 rounded" style={{backgroundColor:colors.alert}} onPress={() => setFavoriteMovie(movie.title)}>
+                    <TouchableOpacity className="p-4 m-4 rounded" style={{backgroundColor:colors.alert}} onPress={handleMovieName}>
                         <Text className="text-white text-lg">Favorite</Text>
                     </TouchableOpacity>
                     <Modal

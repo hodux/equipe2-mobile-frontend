@@ -4,13 +4,14 @@ import { useTheme } from '../contexts/ThemeContext'
 import { TouchableOpacity } from 'react-native'
 import {Link, useFocusEffect, useGlobalSearchParams, useRouter} from 'expo-router'
 import { colorsPalette } from '../assets/colorsPalette'
-import { getIdFromJwt } from '../lib/axios'
+import {getFavoriteMovies, getIdFromJwt} from '../lib/axios'
+import {useFavoriteMovieContext} from "../contexts/favoriteMovieContext";
 
 const index = () => {
     const { theme } = useTheme()
     const router = useRouter()
     const colors = colorsPalette[theme]
-    const glob = useGlobalSearchParams();
+    const {setFavoriteMovie} = useFavoriteMovieContext();
     // Navigate to /movies if JWT is valid
     useFocusEffect(
         React.useCallback(() => {
@@ -22,6 +23,10 @@ const index = () => {
                         console.log("No JWT");
                         return false;
                     }
+                    const res = await getFavoriteMovies(id);
+                    if(res){
+                        setFavoriteMovie(res.favoriteMovie);
+                    }
                     return true;
                 } catch (error) {
                     console.log("Error while checking JWT:", error);
@@ -31,6 +36,7 @@ const index = () => {
 
             checkJWT().then((hasJWT) => {
                 if (hasJWT) {
+
                     router.push({
                         pathname:`/(tabs)/movies`,
                         params:{

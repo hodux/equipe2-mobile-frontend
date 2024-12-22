@@ -1,6 +1,6 @@
 // CustomDrawerHeader.jsx
 import React from 'react';
-import {Text, StyleSheet,TouchableOpacity} from 'react-native';
+import {Text, StyleSheet, TouchableOpacity, View} from 'react-native';
 import { useTheme } from '../contexts/ThemeContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { colorsPalette } from '../assets/colorsPalette';
@@ -20,8 +20,11 @@ const CustomDrawerHeader = ({navigation}) => {
             <Icon name="bars" size={30} color={colors.text}/>
         </Text>
       </TouchableOpacity>
-      
-      <Text style={[styles.title,{color:colors.alert}]}>{favoriteMovie}</Text>
+      <View className="flex-row">
+          <Icon name="heart" size={30} color="red" solid={true}/>
+          <Text style={[styles.title,{color:colors.alert}]}> : {favoriteMovie}</Text>
+      </View>
+
       <TouchableOpacity style={[styles.content]} onPress={() => {toggleTheme()}}>
         <Text>
             <Icon name={theme == 'light' ? "moon" : "sun"} size={30} color={colors.text}/>
