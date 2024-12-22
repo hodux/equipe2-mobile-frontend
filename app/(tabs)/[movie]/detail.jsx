@@ -7,6 +7,7 @@ import {useGlobalSearchParams, useRouter} from 'expo-router';
 import YouTubeIframe from 'react-native-youtube-iframe';
 import {Rating} from "react-native-ratings";
 import {useFavoriteMovieContext} from "../../../contexts/favoriteMovieContext";
+import Icon from "react-native-vector-icons/FontAwesome5";
 const detail = () => {
     const { theme } = useTheme()
     const {setFavoriteMovie} = useFavoriteMovieContext();
@@ -56,6 +57,11 @@ const detail = () => {
         <>
             <ScrollView style={{backgroundColor:colors.background_c1}} contentContainerStyle={{ flexGrow: 1 }}>
                 <View className="flex-1 justify-center items-center" >
+                    <View className="ml-auto">
+                        <TouchableOpacity  onPress={handleMovieName}>
+                            <Icon name="heart" size={50} color="red" solid={true}/>
+                        </TouchableOpacity>
+                    </View>
                     <View>
                         <Image source={{uri: movie.primaryImage}} style={{ width: 200, height: 300, borderRadius: 10 }}/>
                     </View>
@@ -79,9 +85,7 @@ const detail = () => {
                     <TouchableOpacity className="p-4 m-4 rounded" style={{backgroundColor:colors.secondary}} onPress={() => isModalVisible(!modalVisible)}>
                         <Text className="text-white text-lg">Watch Trailer</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity className="p-4 m-4 rounded" style={{backgroundColor:colors.alert}} onPress={handleMovieName}>
-                        <Text className="text-white text-lg">Favorite</Text>
-                    </TouchableOpacity>
+
                     <Modal
                         animationType="fade"
                         transparent={true}
