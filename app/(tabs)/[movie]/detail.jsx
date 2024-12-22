@@ -1,12 +1,12 @@
 import { Image, Text, View, TextInput, ScrollView,TouchableOpacity, Modal, FlatList, Dimensions} from 'react-native'
 import React, { useEffect, useState, useRef } from 'react'
-import { useTheme } from '../../contexts/ThemeContext'
-import { colorsPalette } from '../../assets/colorsPalette'
-import {fetchMovieById} from '../../lib/axios'
+import { useTheme } from '../../../contexts/ThemeContext'
+import { colorsPalette } from '../../../assets/colorsPalette'
+import {fetchMovieById} from '../../../lib/axios'
 import {useGlobalSearchParams, useRouter} from 'expo-router';
 import YouTubeIframe from 'react-native-youtube-iframe';
 import {Rating} from "react-native-ratings";
-import {useFavoriteMovieContext} from "../../contexts/favoriteMovieContext";
+import {useFavoriteMovieContext} from "../../../contexts/favoriteMovieContext";
 const detail = () => {
     const { theme } = useTheme()
     const {setFavoriteMovie} = useFavoriteMovieContext();

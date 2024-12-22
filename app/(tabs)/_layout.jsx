@@ -22,7 +22,7 @@ export default function TabsLayout() {
                 <Tabs.Screen
                     name="movies"
                     options={{
-                        tabBarLabel: "Movies",
+                        title: "Movies",
                         tabBarIcon: ({ color, size }) => (
                             <FontAwesome name="film" color={color} size={size} />
                         ),
@@ -30,14 +30,22 @@ export default function TabsLayout() {
 
                 />
                 <Tabs.Screen
+                name="[movie]/detail"
+                options={{
+                    title: 'Detail',
+                    tabBarButton: () => null, // Hides the tab from the tab bar
+                }}
+                />
+                <Tabs.Screen
                     name="[user]/profile"
                     options={{
-                        tabBarLabel: "Profile",
+                        title: "Profile",
                         tabBarIcon: ({ color, size }) => (
                             <FontAwesome name="user" color={color} size={size} />
                         ),
                     }}
                 />
+
             </Tabs>
     );
 }
