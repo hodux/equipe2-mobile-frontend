@@ -3,8 +3,8 @@ import React, {useState} from 'react'
 import { useTheme } from '../../contexts/ThemeContext'
 import { colorsPalette } from '../../assets/colorsPalette'
 import { TouchableOpacity } from 'react-native'
-import { useRouter, Link} from 'expo-router'
-import { setToken, signUp } from '../../lib/axios'
+import { useRouter,} from 'expo-router'
+import { signUp } from '../../lib/axios'
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { SafeAreaView } from 'react-native-safe-area-context'
 
@@ -53,7 +53,7 @@ const SignUp = () => {
     try{
         setLoading(true)
         const result = await signUp(form.username, form.email ,form.password)
-        
+        console.log(result);
         setLoading(false)
         setForm({username:"", email:"", password:""})
         router.push(`../(tabs)/${result.id}/profile`)
@@ -150,8 +150,14 @@ const SignUp = () => {
                     <Text className="text-center font-medium text-2xl"  style={{color:colors.lightText}}>Créez le compte</Text>
                 </TouchableOpacity>
                 <View className="border-b border-gray-300 my-2.5 w-3/4" />
-                <Text class="text-3xl font-bold underline" style={{color:colors.text}}>If you already have an account <Link style={{color:colors.link}} href="./signin">Sign-in</Link></Text>
-
+                <View style={{flexDirection: 'row'}}>
+                  <Text class="text-3xl font-bold underline" style={{color:colors.text}}>
+                    If you already have an account.
+                  </Text>
+                  <TouchableOpacity onPress={() => { router.push("./signin")}}>
+                    <Text style={{color:colors.link}}> Sign-in</Text>
+                  </TouchableOpacity>
+                </View>
                 
               </View>
             </ScrollView>

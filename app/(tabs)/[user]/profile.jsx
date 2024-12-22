@@ -78,7 +78,7 @@ const profile = () => {
   //Saves and gives a feedback to user
   const handleSave = async () => {
     
-    isSaved = false
+    let isSaved = false
     const saveProfileData = async () => {
       
       const userData = {
@@ -103,10 +103,10 @@ const profile = () => {
   };
 
   //Handle changes in editing/non-editing mode
-  useEffect(()=>{
+  useEffect(async ()=>{
     if(!isMounted) return
     if(!isEditing){
-      handleSave()
+      await handleSave()
     }
   },[isEditing,theme])
 
@@ -116,13 +116,13 @@ const profile = () => {
   const supprimerUser = async () => {
     try{
       const deleteUser = await deleteUserById(glob.user)
-      logOut()
+      await logOut()
     }catch(error){
       console.log(error)
     }
   }
-  const logOut = () => {
-    setToken('')
+  const logOut = async () => {
+    await setToken('')
     router.push('/')
   }
   return (

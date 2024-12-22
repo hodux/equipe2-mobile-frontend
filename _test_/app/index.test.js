@@ -1,11 +1,10 @@
 import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react-native';
 // @ts-ignore
-import Index from '../../app/index'; // Adjust based on file structure
+import Index from '../../app/index';
 import { useRouter } from 'expo-router';
-import { useTheme } from '../../contexts/ThemeContext'; // Import the hook that uses the theme context
+import { useTheme } from '../../contexts/ThemeContext';
 import {useFavoriteMovieContext} from "../../contexts/favoriteMovieContext";
-import { colorsPalette } from '../../assets/colorsPalette';
 
 jest.mock('../../contexts/ThemeContext', () => ({
     useTheme: jest.fn(),
