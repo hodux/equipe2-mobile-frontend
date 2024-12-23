@@ -31,42 +31,45 @@ const profile = () => {
 
   //On mount 
   useEffect(() => {
-    // Fetch profile data
-      const loadData = async () => {
-        try{
-          const profileData = await fetchProfileData(glob.user);
-          if(!profileData) throw Error ('Failed fetching data -> no Data')
 
-          setUsername(profileData.username);
-          setEmail(profileData.email);
-
-          const photo = await AsyncStorage.getItem('photo');
-          if(photo){
-            setProfilePic(photo)
-          }
-
-        }catch(error){
-          console.log('Profile : Failed Loading profileData : ', error)
-          router.push("/auth/signin")
-        }
-      };
-      loadData();
 
     setIsMounted(true);
     return () => {
       setIsMounted(false); // Clean up on unmount
     };
-  }, [router]);
+  }, []);
 
 
   useFocusEffect(() => {
-    const load = async () => {
 
+    // Fetch profile data
+    const loadData = async () => {
+      try{
+        const profileData = await fetchProfileData(glob.user);
+        if(!profileData) throw new Error('Failed fetching data -> no Data')
+        setUsername(profileData.username);
+        setEmail(profileData.email);
+
+        const photo = await AsyncStorage.getItem('photo');
+        if(photo){
+          // setProfilePic(profileData.profilePic);
+          setProfilePic(photo)
+
+
+        }
+      }catch(error){
+        console.log('Profile : Failed Loading profileData : ', error)
+        router.push("/auth/signin")
+      }
+    };
+    loadData();
+
+    const load = async () => {
       const photo = await AsyncStorage.getItem('photo');
       if(photo){
+        // setProfilePic(profileData.profilePic);
         setProfilePic(photo)
       }
-
     }
     if(refresh.current){
       load()
@@ -110,6 +113,9 @@ const profile = () => {
       await handleSave()
     }
   },[isEditing,theme])
+
+  //Should be in a component, but for today it will stay here
+  //Item in the flat list rendering
   
   const supprimerUser = async () => {
     try{
@@ -119,12 +125,10 @@ const profile = () => {
       console.log(error)
     }
   }
-
   const logOut = async () => {
     await setToken('')
     router.push('/')
   }
-
   return (
     <>
       <ScrollView style={{backgroundColor:colors.background_c1}}>

@@ -58,7 +58,7 @@ const Detail = () => {
                 <View className="flex-1 justify-center items-center" >
                     <View className="ml-auto">
                         <TouchableOpacity  onPress={handleMovieName}>
-                            <Icon name="heart" size={50} color="red" solid={true}/>
+                            <Icon name="heart" size={50} color={colors.primary} solid={true}/>
                         </TouchableOpacity>
                     </View>
                     <View>
@@ -68,18 +68,21 @@ const Detail = () => {
                         <Text className="m-2 text-2xl font-bold text-center" style={{color:colors.primary}}>{movie.title}</Text>
                         <Text style={{color:colors.text, fontStyle:"italic"}} >{movie.description}</Text>
                         <View className="mt-4 align-items-center flex-row">
-                            <Text className="mr-4 text-lg font-bold" style={{color:colors.text}}> Rating : {movie.averageRating/2}/5</Text>
-                            <Rating
+                            <Text className={movie.averageRating ? "mr-3 text-lg font-bold" : "text-lg font-bold" } style={{color:colors.text}}> Rating : {movie.averageRating}</Text>
+                            {movie.averageRating ? <Rating
                                 type="custom"
-                                ratingCount={5}
+                                ratingCount={10}
                                 imageSize={20}
-                                startingValue={movie.averageRating/2}
+                                startingValue={movie.averageRating}
                                 readonly
-                            />
+                                tintColor={colors.background}
+                                ratingColor={colors.primary}
+                            /> : <Text className="text-lg font-bold" style={{color:colors.text}}> N/A </Text>}
+
                         </View>
                         <Text className="mr-4 text-lg font-bold" style={{color:colors.text}}> Year : {movie.startYear}</Text>
-                        <Text className="mr-4 text-lg font-bold" style={{color:colors.text}}> Content rating : {movie.contentRating}</Text>
-                        <Text className="mr-4 text-lg font-bold" style={{color:colors.text}}> Length : {movie.runtimeMinutes} min</Text>
+                        <Text className="mr-4 text-lg font-bold" style={{color:colors.text}}> Content rating : {movie.contentRating ? movie.contentRating : "N/A"}</Text>
+                        <Text className="mr-4 text-lg font-bold" style={{color:colors.text}}> Length : {movie.runtimeMinutes ? movie.runtimeMinutes + "min" : "N/A"} </Text>
                     </View>
                     <TouchableOpacity className="p-4 m-4 rounded" style={{backgroundColor:colors.secondary}} onPress={() => isModalVisible(!modalVisible)}>
                         <Text className="text-white text-lg">Watch Trailer</Text>

@@ -20,9 +20,9 @@ const CustomDrawerHeader = ({navigation}) => {
             <Icon name="bars" size={30} color={colors.text}/>
         </Text>
       </TouchableOpacity>
-      <View className="flex-row">
-          <Icon name="heart" size={30} color="red" solid={true}/>
-          <Text style={[styles.title,{color:colors.alert}]}> : {favoriteMovie}</Text>
+      <View className="flex-row justify-center items-center">
+          <Icon name="heart" size={30} color={colors.primary} solid={true}/>
+          <Text style={[styles.title,{color:colors.primary}]}> : {favoriteMovie}</Text>
       </View>
 
       <TouchableOpacity style={[styles.content]} onPress={() => {toggleTheme()}}>
