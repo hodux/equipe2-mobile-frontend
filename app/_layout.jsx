@@ -21,7 +21,7 @@ const Layout = () => {
           <GestureHandlerRootView className="flex-1" >
               <Drawer
                   screenOptions={{
-                      swipeEnabled:true,
+                      swipeEnabled: false,
                       header: ({navigation}) => <CustomDrawerHeader navigation={navigation} />
                   }
                   }>
