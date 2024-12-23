@@ -14,15 +14,12 @@ const CustomDrawerHeader = ({navigation}) => {
   const colors = colorsPalette[theme];
   return (
     <SafeAreaView style={[styles.header,{backgroundColor:colors.background}]}>
-        
-        <TouchableOpacity style={[styles.content]} onPress={() => {navigation.openDrawer();}}>
-        <Text>
-            <Icon name="bars" size={30} color={colors.text}/>
-        </Text>
-      </TouchableOpacity>
-      <View className="flex-row justify-center items-center">
-          <Icon name="heart" size={30} color={colors.primary} solid={true}/>
-          <Text style={[styles.title,{color:colors.primary}]}> : {favoriteMovie}</Text>
+
+
+
+      <View className="flex-row justify-center">
+          {favoriteMovie ? <Text className='mr-3' style={[styles.title,{color:colors.primary}]}> {favoriteMovie}</Text> : <Text className='mr-3 ml-2' style={[styles.title,{color:colors.primary}]}>Choose your favorite movie!</Text> }
+          {favoriteMovie ? <Icon name="heart" size={30} color={colors.primary} solid={true}/> : ''}
       </View>
 
       <TouchableOpacity style={[styles.content]} onPress={() => {toggleTheme()}}>

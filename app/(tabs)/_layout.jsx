@@ -22,7 +22,8 @@ export default function TabsLayout() {
                 <Tabs.Screen
                     name="movies"
                     options={{
-                        title: "Movies",
+                        title: "Howah | Movies",
+                        tabBarLabel: 'Movies',
                         tabBarIcon: ({ color, size }) => (
                             <FontAwesome name="film" color={color} size={size} />
                         ),
@@ -32,7 +33,7 @@ export default function TabsLayout() {
                 <Tabs.Screen
                 name="[movie]/detail"
                 options={{
-                    title: 'Detail',
+                    title: 'Howah | Detail',
                     tabBarButton: () => null,
                 }}
                 />
