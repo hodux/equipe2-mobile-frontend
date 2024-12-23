@@ -28,44 +28,45 @@ const profile = () => {
   const [messageVisible, setMessageVisible] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [isEditSuccess, setIsEditSuccess] = useState(false)
+
   //On mount 
   useEffect(() => {
     // Fetch profile data
-
       const loadData = async () => {
         try{
           const profileData = await fetchProfileData(glob.user);
-          if(!profileData) throw new Error('Failed fetching data -> no Data')
+          if(!profileData) throw Error ('Failed fetching data -> no Data')
+
           setUsername(profileData.username);
           setEmail(profileData.email);
 
           const photo = await AsyncStorage.getItem('photo');
           if(photo){
-            // setProfilePic(profileData.profilePic);
             setProfilePic(photo)
-            
-
           }
+
         }catch(error){
           console.log('Profile : Failed Loading profileData : ', error)
           router.push("/auth/signin")
         }
       };
       loadData();
-    
-    setIsMounted(true); 
 
+    setIsMounted(true);
     return () => {
       setIsMounted(false); // Clean up on unmount
     };
-  }, []);
+  }, [router]);
+
+
   useFocusEffect(() => {
     const load = async () => {
+
       const photo = await AsyncStorage.getItem('photo');
       if(photo){
-        // setProfilePic(profileData.profilePic);
         setProfilePic(photo)
       }
+
     }
     if(refresh.current){
       load()
@@ -109,9 +110,6 @@ const profile = () => {
       await handleSave()
     }
   },[isEditing,theme])
-
-  //Should be in a component, but for today it will stay here
-  //Item in the flat list rendering
   
   const supprimerUser = async () => {
     try{
@@ -121,10 +119,12 @@ const profile = () => {
       console.log(error)
     }
   }
+
   const logOut = async () => {
     await setToken('')
     router.push('/')
   }
+
   return (
     <>
       <ScrollView style={{backgroundColor:colors.background_c1}}>
@@ -213,7 +213,7 @@ const profile = () => {
         <View className="w-full items-center">
           <View className="flex-row justify-center items-center py-10 gap-5">
             <TouchableOpacity onPress={logOut} className="flex-row items-center justify-center w-1/3 p-2 rounded-md" style={{backgroundColor:colors.lightAlert}}>
-              <Text className="pr-1" style={{color:colors.lightText}}>Déconnextion </Text>
+              <Text className="pr-1" style={{color:colors.lightText}}>Déconnexion </Text>
               <Icon  name="sign-out-alt" size={30} color={colors.lightText} />
             </TouchableOpacity>  
             <TouchableOpacity onPress={()=>{setIsEditing((prev)=>{return !prev})}} className="flex-row items-center justify-center w-1/3 p-2 rounded-md" style={{backgroundColor:colors.lightAlert}}>
