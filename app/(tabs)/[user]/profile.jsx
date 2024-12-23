@@ -31,8 +31,6 @@ const profile = () => {
 
   //On mount 
   useEffect(() => {
-
-
     setIsMounted(true);
     return () => {
       setIsMounted(false); // Clean up on unmount
@@ -135,8 +133,8 @@ const profile = () => {
         <View className="w-full" >
           <View className="justify-center items-center py-5">
             <TouchableOpacity 
-              onPress={() => {refresh.current = true;router.push("../../../camera")} }
-              className="rounded-full " 
+              onPress={() => {refresh.current = true;router.push("../../camera")} }
+              className="rounded-full"
               disabled={!isEditing} 
               style={isEditing ? {borderWidth:4, borderColor:colors.lightAlert} : {}}
             >
@@ -153,7 +151,7 @@ const profile = () => {
                 }
               
             </TouchableOpacity>
-            <View className="mt-10">
+            <View>
               {!isEditing ?
                 <Text className="text-4xl font-medium px-16" style={{color:colors.primary}}>{username}</Text>
                 :

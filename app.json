@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "420-512",
-    "slug": "420-512",
+    "name": "howah",
+    "slug": "howah",
     "version": "1.0.0",
-    "scheme": "420-512",
+    "scheme": "howah",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",

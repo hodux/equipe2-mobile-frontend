@@ -61,8 +61,7 @@ const SignUp = () => {
     } catch(error){
         setLoading(false)
         console.log(error)
-        if(error.message.includes("Request failed with status code 409")){
-          
+        if(error.message.includes("User already exists")){
           setMsgErreur("Email et/ou Identifiant déjà utilisé")
         }
         else{
