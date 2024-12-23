@@ -10,12 +10,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import MapView, { Marker, Circle} from 'react-native-maps';
 
 const profile = () => {
-  const { theme } = useTheme()
-  const colors = colorsPalette[theme]
   const glob = useGlobalSearchParams();
   const router = useRouter()
   const refresh = useRef(false)
   const markerImage = require("../../../assets/images/profile/logoMV.png")
+
+  const { theme } = useTheme()
+  const colors = colorsPalette[theme]
 
   //Default Data
   const [username,setUsername] = useState("Default")
@@ -37,9 +38,7 @@ const profile = () => {
     };
   }, []);
 
-
   useFocusEffect(() => {
-
     // Fetch profile data
     const loadData = async () => {
       try{
@@ -50,10 +49,7 @@ const profile = () => {
 
         const photo = await AsyncStorage.getItem('photo');
         if(photo){
-          // setProfilePic(profileData.profilePic);
           setProfilePic(photo)
-
-
         }
       }catch(error){
         console.log('Profile : Failed Loading profileData : ', error)
@@ -65,7 +61,6 @@ const profile = () => {
     const load = async () => {
       const photo = await AsyncStorage.getItem('photo');
       if(photo){
-        // setProfilePic(profileData.profilePic);
         setProfilePic(photo)
       }
     }
@@ -73,24 +68,23 @@ const profile = () => {
       load()
       refresh.current = false
     }
-
-
   })
 
-  //Saves and gives a feedback to user
+  // Saves and gives a feedback to user
   const handleSave = async () => {
-    
+
     let isSaved = false
     const saveProfileData = async () => {
-      
       const userData = {
         username,
         email,
         id: glob.user
       }
-      try{
-        isSaved = await updateProfileData(userData)
-      }catch(error){
+
+      try {
+        await updateProfileData(userData)
+        isSaved = true;
+      } catch(error) {
         console.log("Saving Error : " , error)
         isSaved = false
       }
@@ -100,20 +94,17 @@ const profile = () => {
     setMessageVisible(true);
     setTimeout(() => {
       setMessageVisible(false);
-    }, 2000); 
-   
+    }, 2000);
+
   };
 
   //Handle changes in editing/non-editing mode
-  useEffect(async ()=>{
-    if(!isMounted) return
-    if(!isEditing){
-      await handleSave()
-    }
-  },[isEditing,theme])
-
-  //Should be in a component, but for today it will stay here
-  //Item in the flat list rendering
+  // useEffect(async ()=>{
+  //   if(!isMounted) return
+  //   if(!isEditing){
+  //     await handleSave()
+  //   }
+  // },[isEditing])
   
   const supprimerUser = async () => {
     try{
@@ -123,10 +114,12 @@ const profile = () => {
       console.log(error)
     }
   }
+
   const logOut = async () => {
     await setToken('')
     router.push('/')
   }
+
   return (
     <>
       <ScrollView style={{backgroundColor:colors.background_c1}}>
@@ -135,12 +128,12 @@ const profile = () => {
             <TouchableOpacity 
               onPress={() => {refresh.current = true;router.push("../../camera")} }
               className="rounded-full"
-              disabled={!isEditing} 
+              disabled={!isEditing}
               style={isEditing ? {borderWidth:4, borderColor:colors.lightAlert} : {}}
             >
               {profilePic != "" ? 
                 <Image 
-                  className="w-40 h-40  rounded-full" 
+                  className="w-40 h-40 rounded-full"
                   source={{uri:profilePic}} /> 
                 :
                 <View className="w-40 h-40 rounded-full bg-gray-400 justify-center items-center mb-10">

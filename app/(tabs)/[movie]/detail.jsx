@@ -64,7 +64,7 @@ const Detail = () => {
                     <View>
                         <Image source={{uri: movie.primaryImage}} style={{ width: 200, height: 300, borderRadius: 10 }}/>
                     </View>
-                    <View className="p-4 m-4 rounded" style={{backgroundColor:colors.background, color:colors.text}}>
+                    <View className="p-4 m-4 rounded-2xl" style={{backgroundColor:colors.background, color:colors.text}}>
                         <Text className="m-2 text-2xl font-bold text-center" style={{color:colors.primary}}>{movie.title}</Text>
                         <Text style={{color:colors.text, fontStyle:"italic"}} >{movie.description}</Text>
                         <View className="mt-4 align-items-center flex-row">
@@ -84,7 +84,7 @@ const Detail = () => {
                         <Text className="mr-4 text-lg font-bold" style={{color:colors.text}}> Content rating : {movie.contentRating ? movie.contentRating : "N/A"}</Text>
                         <Text className="mr-4 text-lg font-bold" style={{color:colors.text}}> Length : {movie.runtimeMinutes ? movie.runtimeMinutes + "min" : "N/A"} </Text>
                     </View>
-                    <TouchableOpacity className="p-4 m-4 rounded" style={{backgroundColor:colors.secondary}} onPress={() => isModalVisible(!modalVisible)}>
+                    <TouchableOpacity className="p-4 m-4 rounded-2xl" style={{backgroundColor:colors.secondary}} onPress={() => isModalVisible(!modalVisible)}>
                         <Text className="text-white text-lg">Watch Trailer</Text>
                     </TouchableOpacity>
 

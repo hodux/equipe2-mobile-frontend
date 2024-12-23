@@ -54,7 +54,7 @@ const signin = () => {
 
     } catch(error){
         setLoading(false)
-        if(error.message == "AxiosError: Request failed with status code 401"){
+        if(error.message === "AxiosError: Request failed with status code 401"){
           setMsgErreur("Identifiant ou mot de passe incorrect")
         }
         else{

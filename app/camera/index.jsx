@@ -3,6 +3,7 @@ import { useState, useRef } from 'react';
 import {useRouter } from "expo-router"
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {SafeAreaView} from "react-native-safe-area-context";
 
 export default function App() {
   const [facing, setFacing] = useState('back');
@@ -17,10 +18,10 @@ export default function App() {
   if (!permission.granted) {
     // Camera permissions are not granted yet.
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container} className="justify-center items-center">
         <Text style={styles.message}>We need your permission to show the camera</Text>
         <Button onPress={requestPermission} title="grant permission" />
-      </View>
+      </SafeAreaView>
     );
   }
 
@@ -60,7 +61,10 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  
+  container: {
+    flex: 1,
+
+  },
   message: {
     textAlign: 'center',
     paddingBottom: 10,
@@ -74,7 +78,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     margin: 64,
   },
-  
   text: {
     fontSize: 24,
     fontWeight: 'bold',

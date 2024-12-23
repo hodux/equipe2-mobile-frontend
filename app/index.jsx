@@ -6,6 +6,7 @@ import {Link, useFocusEffect, useRouter} from 'expo-router'
 import { colorsPalette } from '../assets/colorsPalette'
 import {getFavoriteMovies, getIdFromJwt} from '../lib/axios'
 import {useFavoriteMovieContext} from "../contexts/favoriteMovieContext";
+import {SafeAreaView} from "react-native-safe-area-context";
 
 const Index = () => {
     const { theme } = useTheme()
@@ -49,9 +50,9 @@ const Index = () => {
     );
 
     return (
-        <View className={`flex-1 p-5 justify-evenly items-center`} style={{backgroundColor:colors.background_c1}} >
+        <SafeAreaView className={`flex-1 p-5 justify-evenly items-center`} style={{backgroundColor:colors.background_c1}} >
             <Text className={`text-4xl font-bold text-center`} style={{color:colors.primary}}>Welcome to Howah!</Text>
-            <Text className={`font-bold text-center`}>Learn more about your favorite movies, in the comfort of your home</Text>
+            <Text className={`font-bold text-center`} style={{color:colors.text}}>Learn more about your favorite movies, in the comfort of your home</Text>
 
             <TouchableOpacity className={`rounded-3xl p-6`} style={{backgroundColor:colors.primary}} onPress={() => { router.push("./(tabs)/movies")}}>
                 <Text className={`text-4xl`} style={{color:colors.lightText}}>Get started !</Text>
@@ -66,7 +67,7 @@ const Index = () => {
                     <Text style={{color:colors.link}}> Sign-up</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 
